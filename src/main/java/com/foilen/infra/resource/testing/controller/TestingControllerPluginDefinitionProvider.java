@@ -10,6 +10,7 @@
 package com.foilen.infra.resource.testing.controller;
 
 import com.foilen.infra.plugin.v1.core.context.CommonServicesContext;
+import com.foilen.infra.plugin.v1.core.context.internal.InternalServicesContext;
 import com.foilen.infra.plugin.v1.core.plugin.IPPluginDefinitionProvider;
 import com.foilen.infra.plugin.v1.core.plugin.IPPluginDefinitionV1;
 
@@ -24,8 +25,8 @@ public class TestingControllerPluginDefinitionProvider implements IPPluginDefini
         return instance;
     }
 
-    private TestingControllerInfiniteLoopUpdateHander testingControllerInfiniteLoopUpdateHander = new TestingControllerInfiniteLoopUpdateHander();
-    private TestingControllerMockUpdateHander testingControllerMockUpdateHander = new TestingControllerMockUpdateHander();
+    private TestingControllerInfiniteLoopChangesEventHandler testingControllerInfiniteLoopChangesEventHandler = new TestingControllerInfiniteLoopChangesEventHandler();
+    private TestingControllerMockChangesEventHandler testingControllerMockChangesEventHandler = new TestingControllerMockChangesEventHandler();
 
     public TestingControllerPluginDefinitionProvider() {
         instance = this;
@@ -35,25 +36,29 @@ public class TestingControllerPluginDefinitionProvider implements IPPluginDefini
     public IPPluginDefinitionV1 getIPPluginDefinition() {
 
         IPPluginDefinitionV1 pluginDefinitionV1 = new IPPluginDefinitionV1("Foilen", "Testing Controller", "To do some specific tests", "1.0.0");
-        pluginDefinitionV1.addUpdateHandler(testingControllerInfiniteLoopUpdateHander);
-        pluginDefinitionV1.addUpdateHandler(testingControllerMockUpdateHander);
+        pluginDefinitionV1.addChangesHandler(testingControllerInfiniteLoopChangesEventHandler);
+        pluginDefinitionV1.addChangesHandler(testingControllerMockChangesEventHandler);
         return pluginDefinitionV1;
     }
 
-    public TestingControllerInfiniteLoopUpdateHander getTestingControllerInfiniteLoopUpdateHander() {
-        return testingControllerInfiniteLoopUpdateHander;
+    public TestingControllerInfiniteLoopChangesEventHandler getTestingControllerInfiniteLoopChangesEventHandler() {
+        return testingControllerInfiniteLoopChangesEventHandler;
     }
 
-    public TestingControllerMockUpdateHander getTestingControllerMockUpdateHander() {
-        return testingControllerMockUpdateHander;
+    public TestingControllerMockChangesEventHandler getTestingControllerMockChangesEventHandler() {
+        return testingControllerMockChangesEventHandler;
     }
 
     @Override
-    public void initialize(CommonServicesContext commonServicesContext) {
+    public void initialize(CommonServicesContext commonServicesContext, InternalServicesContext internalServicesContext) {
     }
 
-    public void setTestingControllerUpdateHander(TestingControllerInfiniteLoopUpdateHander testingControllerUpdateHander) {
-        this.testingControllerInfiniteLoopUpdateHander = testingControllerUpdateHander;
+    public void setTestingControllerInfiniteLoopChangesEventHandler(TestingControllerInfiniteLoopChangesEventHandler testingControllerInfiniteLoopChangesEventHandler) {
+        this.testingControllerInfiniteLoopChangesEventHandler = testingControllerInfiniteLoopChangesEventHandler;
+    }
+
+    public void setTestingControllerMockChangesEventHandler(TestingControllerMockChangesEventHandler testingControllerMockChangesEventHandler) {
+        this.testingControllerMockChangesEventHandler = testingControllerMockChangesEventHandler;
     }
 
 }
