@@ -22,9 +22,9 @@ import com.foilen.infra.resource.example.JunitResource;
 
 public class TestingControllerMockChangesEventHandler implements ChangesEventHandler {
 
-    private List<Long> added = new ArrayList<>();
-    private List<Long> updated = new ArrayList<>();
-    private List<Long> deleted = new ArrayList<>();
+    private List<String> added = new ArrayList<>();
+    private List<String> updated = new ArrayList<>();
+    private List<String> deleted = new ArrayList<>();
 
     public void clear() {
         added.clear();
@@ -45,15 +45,15 @@ public class TestingControllerMockChangesEventHandler implements ChangesEventHan
         return Collections.emptyList();
     }
 
-    public List<Long> getAdded() {
+    public List<String> getAdded() {
         return added;
     }
 
-    public List<Long> getDeleted() {
+    public List<String> getDeleted() {
         return deleted;
     }
 
-    public List<Long> getUpdated() {
+    public List<String> getUpdated() {
         return updated;
     }
 

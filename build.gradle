@@ -34,7 +34,7 @@ eclipse {
 
 dependencies {
   compileOnly "com.foilen:foilen-infra-plugin-core:$foilenInfraPluginVersion"
-  compileOnly "com.foilen:foilen-infra-resource-example:speedup"
+  compileOnly "com.foilen:foilen-infra-resource-example:$foilenInfraResourceExampleVersion"
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
