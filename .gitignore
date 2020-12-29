@@ -2,3 +2,17 @@
 .gradle/
 build/
 bin/
+
+# Eclipse
+.classpath
+.project
+.settings/
+.springBeans
+
+# IDEA
+.idea/
+/out/
+
+# Projects
+.attach_pid*
+_*
